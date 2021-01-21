@@ -58,16 +58,18 @@ static void		file_gestion(char *file_name, int nb_arg)
 
 int				main(int ac, char **av)
 {
-	int			i;
+	//int			i;
+	t_pars		pars_data;
 
-	i = 1;
-	if (ac == 1)
+	//i = 1;
+	pars_data = parser(av, ac);
+	if (pars_data.file == 0)//if (ac == 1)
 		file_gestion("a.out", 1);
-	while (i < ac)
+	while (pars_data.file_idx < ac)
 	{
 		if (ac > 2)
 			ft_putchar('\n');
-		file_gestion(av[i], ac);
+		file_gestion(av[pars_data.file_idx], ac);
 		i++;
 	}
 	return (0);
